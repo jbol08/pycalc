@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+</head>
+<body>
+    <h1>Currency Converter</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <div>
+    <form action="/result">
+    <label for="convert-from">Converting from:</label>
+    <input type="text" placeholder="USD" name="convert-from">
+
+    <label for="convert-to">Convert to:</label>
+    <input type="text" placeholder="GBP" name="convert-to">
+
+    <label for="amount">Amount:</label>
+    <input type="number" placeholder="amount" name="amount">
+    
+    <input type="submit" value="Convert">
+    </form>
+    {% if result %}
+    <h3>The result is {{symbol}} {{result}} </h3>
+    {% endif %}
+   
+    </div>
+
+</body>
+</html>
